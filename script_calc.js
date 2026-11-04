@@ -25,5 +25,5 @@ function cal_restaurante(){
     document.getElementById("resultado1").innerHTML = 'Valor: ' + Valor
     document.getElementById("resultado2").innerHTML = '10%: R$ ' + Percentual
     document.getElementById("resultado3").innerHTML = 'Valor atual: ' + Valor_atual
-    document.getElementById("resultado4").innerHTML = 'Valor por pessoa: ' + Conta
+    document.getElementById("resultado4").innerHTML = 'Valor por pessoa: ' + Conta.toFixed(2)
 }
