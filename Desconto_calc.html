@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Desconto</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script_calc.js"></script>
+</head>
+<body bgcolor="#A47DAB">
+    <div class="container">
+        <form>
+            <h1 style="font-size: 22px; text-shadow: 1px 1px #000000;">Calculadora de Desconto</h1>
+        <p class="subtitulo" font-size="5px" aling="center">
+            Descubra o desconto na hora!
+        </p>
+
+            <label for="produto">Produto:</label>
+            <input type="text" id="produto"><br><br>
+            
+            <label for="valor">Valor:</label>
+            <input type="text" id="valor"><br><br>
+            
+            <label for="desconto">Desconto:</label>
+            <input type="number" step="5" id="desconto"><br><br>
+            
+            <input type="submit" value="Calcular" onclick="calcular()">
+            <input type="reset" value="Limpar">
+        </form>
+        
+        <div class="resultado-box">
+            <h3>Resultado</h3>
+            <p id="resultado1"> </p>
+            <p id="resultado2"> </p>
+            <p id="resultado3"> </p>
+            <p id="resultado4"> </p>
+        </div>
+    </div>
+</body>
+</html>
