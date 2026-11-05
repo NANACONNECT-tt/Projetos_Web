@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Porcentagem</title>
+    <script src="../js/script_calc.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://img.icons8.com/?size=100&id=qrOXrfUDKkOX&format=png&color=000000">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    /* Fundo estilo lanchonete/hamburgueria K-drama com padrão quadriculado em tons lilás */
+    background-color: #2b1b36;
+    background-image: 
+        linear-gradient(45deg, #3d234d 25%, transparent 25%), 
+        linear-gradient(-45deg, #3d234d 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #3d234d 75%), 
+        linear-gradient(-45deg, transparent 75%, #3d234d 75%);
+    background-size: 40px 40px;
+    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container Principal da Calculadora */
+.container {
+    background-color: #53356a;
+    border: 4px solid #a47dab;
+    border-radius: 20px;
+    box-shadow: 0px 0px 25px rgba(164, 125, 171, 0.4), inset 0 0 10px rgba(245, 243, 243, 0.8);
+    width: 100%;
+    max-width: 420px;
+    padding: 30px 25px;
+    color: #ffffff;
+    position: relative;
+}
+
+/* Borda decorativa lateral no container (estilo neon K-pop/Dorama) */
+.container::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: -10px;
+    bottom: 15px;
+    width: 6px;
+    background: linear-gradient(180deg, #a47dab, #d8b4e2, #a47dab);
+    border-radius: 4px;
+    box-shadow: 0 0 10px #a47dab;
+}
+
+/* Título Centralizado */
+h1 {
+    text-align: center;
+    color: #d8b4e2;
+    font-size: 24px !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 4px #000000, 0 0 8px rgba(164, 125, 171, 0.6) !important;
+}
+
+/* Subtítulo Centralizado */
+.subtitulo {
+    text-align: center;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+hr {
+    border: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #a47dab, transparent);
+    margin-bottom: 25px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #d8b4e2;
+    margin-bottom: 6px;
+    display: block;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 18px;
+    background-color: #1c0d27;
+    border: 2px solid #a47dab;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: #e5c3ee;
+    box-shadow: 0 0 12px rgba(229, 195, 238, 0.5);
+    background-color: #251234;
+}
+
+/* Botões */
+.botoes-container {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+input[type="submit"],
+input[type="reset"] {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+input[type="submit"] {
+    background-color: #a47dab;
+    color: #20112c;
+    box-shadow: 0 4px 10px rgba(164, 125, 171, 0.3);
+}
+
+input[type="submit"]:hover {
+    background-color: #b891bf;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(164, 125, 171, 0.5);
+}
+
+input[type="reset"] {
+    background-color: #251234;
+    color: #d8b4e2;
+    border: 1px solid #a47dab;
+}
+
+input[type="reset"]:hover {
+    background-color: #381b4e;
+    color: #ffffff;
+}
+
+/* Caixa de Resultados */
+.resultado-box {
+    margin-top: 25px;
+    background-color: #1c0d27;
+    border-left: 4px solid #a47dab;
+    border-radius: 10px;
+    padding: 15px 20px;
+}
+
+.resultado-box h3 {
+    color: #d8b4e2;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.resultado-box p {
+    color: #ffffff;
+    font-size: 14px;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px stroke rgba(164, 125, 171, 0.2);
+}
+
+.resultado-box p:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="event.preventDefault(); cal_restaurante();">
+            <h1>Calcular Porcentagem</h1>
+            <p class="subtitulo">O sabor começa aqui!</p>
+            <hr>
+
+            <label for="Valor">Valor total (R$):</label>
+            <input type="text" id="Valor" placeholder="Ex: 150,00">
+
+            <label for="Pessoas">N° de Pessoas:</label>
+            <input type="number" id="Pessoas" min="1" placeholder="Ex: 2">
+            
+            <div class="btn-group">
+                <input type="submit" value="Calcular">
+                <input type="reset" value="Limpar">
+            </div>
+        </form>
+        
+        <div class="resultado-box">
+            <h3>Resultado</h3>
+            <p id="resultado1"></p>
+            <p id="resultado2"></p>
+            <p id="resultado3"></p>
+            <p id="resultado4"></p>
+        </div>
+    </div>
+</body>
+</html>
